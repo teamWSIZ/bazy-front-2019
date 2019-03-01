@@ -18,4 +18,4 @@ Template projektu do developmentu witryn w oparciu o angular 7 i less
   - `ng serve --host 0.0.0.0 --port=4123` (odpowiednio zmienić port, jeśli wielu userów pracuje na tym hoście)
   - sprawdzić na `http://localhost:4123`
   
-   
+cd   
