@@ -1,0 +1,17 @@
+<div class="card bg-dark">
+
+  <div class="bg-dark card-header"></div>
+  <div class="bg-dark card-body text-white">
+    <ul>
+      <li *ngFor="let m of messages">
+        <strong>{{m.title}}</strong> {{m.content}}
+      </li>
+    </ul>
+
+
+  </div>
+  <div class="bg-dark card-footer">
+    <button class="btn-outline-info btn" (click)="reloadMessages()">Wczytaj wiadomości</button>
+  </div>
+
+</div>
