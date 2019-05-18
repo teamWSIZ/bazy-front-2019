@@ -5,11 +5,28 @@
         Welcome
       </div>
       <div class="card-body bg-dark text-white">
-        WeLcOmE !!!!!!!!!
+        {{welcomeMessage}}
+        <table class="table table-primary table-hover">
+          <thead>
+          <tr>
+            <td>first name</td>
+            <td>last name</td>
+            <td>birthdate</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let e of employees">
+            <td> {{e.firstname}}</td>
+            <td> {{e.lastname}}</td>
+            <td> {{e.birthdate}}</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
       <div class="card-footer bg-dark text-white">
-        <button class="btn btn-outline-info">Refresh!</button>
+        <button class="btn btn-outline-info" (click)="loadEmployees()">Refresh!</button>
       </div>
+
     </div>
   </div>
   <div class="col-md-6"></div>
