@@ -9,6 +9,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ChatComponent } from './chat/chat.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {HttpClientModule} from "@angular/common/http";
     HomeComponent,
     ContactComponent,
     MenuComponent,
-    ChatComponent
+    ChatComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
