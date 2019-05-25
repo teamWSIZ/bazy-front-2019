@@ -10,6 +10,7 @@
             <td>id</td>
             <td>Tytuł</td>
             <td>Treść</td>
+            <td>Akcja</td>
           </tr>
           </thead>
           <tbody>
@@ -17,6 +18,13 @@
             <td> {{m.id}}</td>
             <td> {{m.title}}</td>
             <td> {{m.content}}</td>
+            <td>
+              <button class="btn btn-outline-info"
+                      (click)="editedMessage=m"
+                      data-toggle="modal" data-target="#editMessage">
+                Edit
+              </button>
+            </td>
           </tr>
           </tbody>
         </table>
@@ -24,10 +32,29 @@
 
       </div>
       <div class="bg-dark card-footer">
-        <button class="btn-outline-info btn" (click)="reloadMessages()">Wczytaj wiadomości</button>
+        <button class="btn-outline-info btn" (click)="reloadMessages()">
+          Wczytaj wiadomości</button>
       </div>
     </div>
 
   </div>
 </div>
 
+
+<!-- MODALS -->
+<div class="modal text-dark" id="editMessage" tabindex="-1" role="dialog">
+  <div class="modal-dialog bg-dark" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">Edycja wiadomości</h5>
+      </div>
+      <div class="modal-body bg-dark text-light">
+        {{editedMessage.title}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Porzuć</button>
+        <button type="button" class="btn btn-primary">Zapisz</button>
+      </div>
+    </div>
+  </div>
+</div>

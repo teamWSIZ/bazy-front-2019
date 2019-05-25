@@ -9,6 +9,7 @@ import {Message} from "../model/message";
 })
 export class ChatComponent implements OnInit {
   messages: Message[] = [];
+  editedMessage: Message;
 
   constructor(private http: HttpClient) { }
 
