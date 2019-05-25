@@ -9,8 +9,8 @@
           <tr>
             <td width="10%">id</td>
             <td width="20%">Tytuł</td>
-            <td width="60%">Treść</td>
-            <td width="10%">Akcja</td>
+            <td width="50%">Treść</td>
+            <td width="20%">Akcja</td>
           </tr>
           </thead>
           <tbody>
@@ -23,6 +23,10 @@
                       (click)="editedMessage=m"
                       data-toggle="modal" data-target="#editMessage">
                 Edit
+              </button>
+              <button class="btn btn-outline-warning"
+                      (click)="deleteMessage(m.id)">
+                Delete
               </button>
             </td>
           </tr>

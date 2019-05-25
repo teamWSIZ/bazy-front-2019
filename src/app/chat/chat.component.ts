@@ -32,7 +32,16 @@ export class ChatComponent implements OnInit {
     });
   }
 
+  deleteMessage(id: number) {
+    console.log(`deleting message with id=${id}`);
+    this.http.delete(this.url + '/' + id)
+      .subscribe(f=>{
+        console.log('deleted OK');
+      })
+  }
+
   shorten(str: string, len: number) {
+    if (str===undefined || str===null) return '';
     if (str.length < len) return str;
     else return str.substring(0,len) + '(...)'
   }
