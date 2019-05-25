@@ -1,23 +1,23 @@
 <div class="row">
-  <div class="col-md-3"></div>
-  <div class="col-md-9">
+  <div class="col-md-2"></div>
+  <div class="col-md-10">
     <div class="card bg-dark">
       <div class="bg-dark card-header"></div>
       <div class="bg-dark card-body text-white">
         <table class="table bg-dark table-sm table-hover table-primary text-light">
           <thead>
           <tr>
-            <td>id</td>
-            <td>Tytuł</td>
-            <td>Treść</td>
-            <td>Akcja</td>
+            <td width="10%">id</td>
+            <td width="20%">Tytuł</td>
+            <td width="60%">Treść</td>
+            <td width="10%">Akcja</td>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let m of messages">
             <td> {{m.id}}</td>
-            <td> {{m.title}}</td>
-            <td> {{m.content}}</td>
+            <td> {{shorten(m.title, 30)}}</td>
+            <td> {{shorten(m.content, 50)}}</td>
             <td>
               <button class="btn btn-outline-info"
                       (click)="editedMessage=m"
@@ -49,11 +49,23 @@
         <h5 class="modal-title">Edycja wiadomości</h5>
       </div>
       <div class="modal-body bg-dark text-light">
-        {{editedMessage.title}}
+        <div>
+          <div class="form-group">
+            <label for="title">Tytuł</label>
+            <input type="text" class="form-control" id="title"
+                   [(ngModel)]="editedMessage.title">
+
+            <label for="content">Treść</label>
+            <textarea class="form-control" rows="5" id="content"
+                      [(ngModel)]="editedMessage.content"></textarea>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Porzuć</button>
-        <button type="button" class="btn btn-primary">Zapisz</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Porzuć</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                (click)="saveMessage()">Zapisz</button>
       </div>
     </div>
   </div>

@@ -9,7 +9,9 @@ import {Message} from "../model/message";
 })
 export class ChatComponent implements OnInit {
   messages: Message[] = [];
-  editedMessage: Message;
+  editedMessage: Message = new Message();
+  url = 'http://localhost:3003/messages';
+
 
   constructor(private http: HttpClient) { }
 
@@ -17,11 +19,21 @@ export class ChatComponent implements OnInit {
   }
 
   reloadMessages() {
-    const url = 'http://localhost:3003/messages';
-    console.log(`calling ${url}`);
-    this.http.get<Message[]>(url)
+    this.http.get<Message[]>(this.url)
       .subscribe(res => {
         this.messages = res;
       });
+  }
+
+  saveMessage() {
+    console.log(`saving message ${JSON.stringify(this.editedMessage)}`);
+    this.http.post(this.url, this.editedMessage).subscribe(m=>{
+      console.log('saved OK');
+    });
+  }
+
+  shorten(str: string, len: number) {
+    if (str.length < len) return str;
+    else return str.substring(0,len) + '(...)'
   }
 }
