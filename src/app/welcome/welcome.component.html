@@ -2,7 +2,7 @@
   <div class="col-md-6">
     <div class="card bg-dark text-white">
       <div class="card-header bg-dark text-white text-center">
-        Welcome
+        Employees
       </div>
       <div class="card-body bg-dark text-white">
         {{welcomeMessage}}
@@ -29,6 +29,35 @@
 
     </div>
   </div>
-  <div class="col-md-6"></div>
+  <div class="col-md-6">
+    <div class="card bg-dark text-white">
+      <div class="card-header bg-dark text-white text-center">
+        Customers
+      </div>
+      <div class="card-body bg-dark text-white">
+        <table class="table table-primary table-hover">
+          <thead>
+          <tr>
+            <td>customer name</td>
+            <td>address</td>
+            <td>country</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let c of customers">
+            <td> {{c.customername}}</td>
+            <td> {{c.address}}</td>
+            <td> {{c.country}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer bg-dark text-white">
+        <button class="btn btn-outline-info" (click)="loadCustomers()">Refresh customers!</button>
+      </div>
+
+    </div>
+
+  </div>
 </div>
 
