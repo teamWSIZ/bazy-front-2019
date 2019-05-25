@@ -49,4 +49,8 @@ export class WelcomeComponent implements OnInit {
   min(number: number, number2: number) {
     return Math.min(number, number2)
   }
+
+  sortCustomersByAddress() {
+    this.customers.sort((a, b) => a.address>b.address?1:-1)
+  }
 }
