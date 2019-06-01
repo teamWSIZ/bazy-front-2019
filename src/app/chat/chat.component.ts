@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Message} from "../model/message";
 
@@ -11,9 +11,11 @@ export class ChatComponent implements OnInit {
   messages: Message[] = [];
   editedMessage: Message = new Message();
   url = 'http://localhost:3003/messages';
+  ascend = 1;
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit() {
   }
@@ -27,7 +29,7 @@ export class ChatComponent implements OnInit {
 
   saveMessage() {
     console.log(`saving message ${JSON.stringify(this.editedMessage)}`);
-    this.http.post(this.url, this.editedMessage).subscribe(m=>{
+    this.http.post(this.url, this.editedMessage).subscribe(m => {
       console.log('saved OK');
     });
   }
@@ -35,14 +37,29 @@ export class ChatComponent implements OnInit {
   deleteMessage(id: number) {
     console.log(`deleting message with id=${id}`);
     this.http.delete(this.url + '/' + id)
-      .subscribe(f=>{
+      .subscribe(f => {
         console.log('deleted OK');
       })
   }
 
   shorten(str: string, len: number) {
-    if (str===undefined || str===null) return '';
+    if (str === undefined || str === null) return '';
     if (str.length < len) return str;
-    else return str.substring(0,len) + '(...)'
+    else return str.substring(0, len) + '(...)'
   }
+
+  addMessage() {
+    //
+    this.editedMessage = new Message();
+  }
+
+
+  sortMessagesBy(field: string) {
+    this.messages.sort((a, b) => {
+      return this.ascend * (a[field] < b[field] ? -1 : 1);
+    });
+    this.ascend *= -1;
+  }
+
+
 }
