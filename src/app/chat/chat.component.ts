@@ -12,6 +12,7 @@ export class ChatComponent implements OnInit {
   editedMessage: Message = new Message();
   url = 'http://localhost:3003/messages';
   ascend = 1;
+  soughtTitle: string;
 
 
   constructor(private http: HttpClient) {
@@ -62,4 +63,15 @@ export class ChatComponent implements OnInit {
   }
 
 
+  loadSelected() {
+    console.log(`szukanie dla frazy ${this.soughtTitle}`);
+    if (this.soughtTitle.length<3) this.reloadMessages();
+
+    const url = 'http://localhost:3003/messages/search?title=' + this.soughtTitle;
+    this.http.get<Message[]>(url)
+      .subscribe(res => {
+        this.messages = res;
+      });
+
+  }
 }
