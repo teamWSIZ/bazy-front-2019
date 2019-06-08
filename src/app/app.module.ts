@@ -11,6 +11,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { WelcomeComponent } from './welcome/welcome.component';
 import {NgxPaginationModule} from "ngx-pagination";
+import { CustomerbrowserComponent } from './customerbrowser/customerbrowser.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {NgxPaginationModule} from "ngx-pagination";
     ContactComponent,
     MenuComponent,
     ChatComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    CustomerbrowserComponent
   ],
   imports: [
     BrowserModule,
