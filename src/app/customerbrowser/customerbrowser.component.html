@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-md-2">
+    <table class="text-white">
+      <tbody>
+      <tr *ngFor="let c of countries">
+        <td>{{c}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="col-md-10">
+    <div class="card bg-dark">
+      <div class="bg-dark card-header h3 text-white text-center"> Customers </div>
+      <div class="bg-dark card-body text-white">
+        <table class="table bg-dark table-sm table-hover table-primary text-light">
+          <thead>
+          <tr>
+            <td class="clickable" width="20%">godność</td>
+            <td class="clickable" width="20%">kontakt</td>
+            <td width="40%">adres</td>
+            <td width="10%">miasto</td>
+            <td width="10%">kraj</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let c of customers">
+            <td>{{c.customername}}</td>
+            <td>{{c.contactname}}</td>
+            <td>{{c.address}}</td>
+            <td>{{c.city}}</td>
+            <td>{{c.country}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+      <div class="bg-dark card-footer">
+        <button class="btn-outline-info btn mr-1" (click)="loadCustomers()">
+          Wczytaj wiadomości</button>
+        <button class="btn-outline-info btn mr-1"
+                data-toggle="modal" data-target="#editMessage">
+          Dodaj klienta</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- MODALS -->
+<div class="modal text-dark" id="editMessage" tabindex="-1" role="dialog">
+  <div class="modal-dialog bg-dark" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">Edycja wiadomości</h5>
+      </div>
+      <div class="modal-body bg-dark text-light">
+        <div>
+          <div class="form-group">
+            <label for="title">Tytuł</label>
+            <input type="text" class="form-control" id="title"
+                   [(ngModel)]="editedMessage.customername">
+
+            <label for="content">Treść</label>
+            <textarea class="form-control" rows="5" id="content"
+                      [(ngModel)]="editedMessage.address"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Porzuć</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                (click)="saveCustomer()">Zapisz</button>
+      </div>
+    </div>
+  </div>
+</div>
